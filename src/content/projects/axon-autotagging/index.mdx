@@ -1,8 +1,7 @@
 ---
-title: "Axon Autotagging"
+title: "Axon Auto-tagging"
 role: "Product Designer"
 timeline: "2024"
-description: "Mô tả ngắn về project Axon Autotagging"
 ---
 
 {/* 
@@ -29,33 +28,77 @@ description: "Mô tả ngắn về project Axon Autotagging"
      - Dùng Dropbox link: đổi dl=0 thành raw=1
 */}
 
-<HeroImage 
-  src="/projects/axon-autotagging/images/hero.png" 
-  alt="Axon Autotagging" 
-  tagline="Mô tả tagline cho hero"
-/>
-
 <Section title="Overview">
-Nội dung overview ở đây...
+AI Auto-Tagging analyzes multi-source signals (camera overlap, transcripts, dispatch data) to automatically suggest precise metadata across Axon App and Evidence. This drastically reduces manual data entry, enabling officers to quickly validate information and ensuring the completeness and reliability of every case file.
+
+Prioritizing high-utility function over visual flair to support a user base of over 1 million officers.
 </Section>
 
-<KPIGroup>
-  <KPI metric="XX%" label="Metric 1" />
-  <KPI metric="XX" label="Metric 2" />
-  <KPI metric="+X" label="Metric 3" />
-</KPIGroup>
+<HeroVideo 
+  url="https://vimeo.com/1146338754"
+  title="Axon Auto-tagging"
+  caption="Reducing manual data entry with AI-driven metadata suggestions."
+  overlayOpacity={50}
+/>
+
+<Section title="Measurable Outcome">
+  <KPIGroup>
+    <KPI metric="Top 1 Win" label="of DEMS in Q3 2025" />
+    <KPI metric="65%" label="Suggestion acceptance in first month launched - Q2 2025" />
+  </KPIGroup>
+</Section>
 
 <Section title="My Role">
-Mô tả vai trò...
+- Led end-to-end UX for AI Auto-Tagging across mobile and desktop, driving the process from discovery to delivery to accelerate evidence retrieval.
+- Designed "human-in-the-loop" workflows for reviewing and editing AI-generated metadata, effectively balancing automation speed with user control and trust.
+- Collaborated cross-functionally with AI/ML and Engineering teams to align design decisions with model behaviors, technical constraints, and rollout plans.
 </Section>
 
-<Section title="Solution">
-<MockupImage 
-  src="/projects/axon-autotagging/images/mockup-1.png" 
-  alt="Mô tả hình" 
-  caption="Caption cho hình"
+<Section title="Design Process">
+<TimelineInfographic 
+  nodes={[
+    {
+      year: "Phase 1",
+      title: "Research & Discovery",
+      description: "Understanding the problem space.",
+      details: {
+        focus: "Identify key friction points in metadata entry.",
+        designed: [
+           "Stakeholder interviews",
+           "Data analysis of current tagging behaviors",
+           "Competitor analysis"
+        ]
+      }
+    },
+    {
+      year: "Phase 2",
+      title: "Design Iteration & Usability Evaluation",
+      description: " prototyping and validating solutions.",
+      details: {
+        focus: "Refining the suggestion engine UI.",
+        designed: [
+           "Low-fidelity wireframes",
+           "Interactive prototypes",
+           "Usability testing sessions"
+        ]
+      }
+    },
+    {
+      year: "Phase 3",
+      title: "Handoff & Implementation",
+      description: "Bringing the design to life.",
+      details: {
+        focus: "Ensuring design fidelity in production.",
+        designed: [
+           "Design specs & redlines",
+           "QA support",
+           "Post-launch monitoring"
+        ]
+      }
+    }
+  ]}
 />
-
-Nội dung solution...
 </Section>
+
+
 

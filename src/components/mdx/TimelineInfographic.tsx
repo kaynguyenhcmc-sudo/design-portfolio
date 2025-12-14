@@ -7,6 +7,12 @@ interface TimelineNode {
   title: string;
   description: string;
   image?: string;
+  tag?: string;
+  details?: {
+    focus?: string;
+    designed?: string[];
+    impact?: string;
+  };
 }
 
 interface TimelineInfographicProps {
@@ -35,123 +41,153 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
   const getNodeStyle = (index: number) => {
     if (hoveredIndex === null) return {};
     if (hoveredIndex === index) {
-      return { transform: "scale(1.05)", zIndex: 10 };
+      return { transform: "scale(1.02)", zIndex: 10 };
     }
-    return { opacity: 0.4, filter: "brightness(0.6)" };
+    return { opacity: 0.5, filter: "brightness(0.7)" };
   };
 
   return (
     <>
       <div className="my-12 animate-fade-in">
-        {/* Desktop Layout - Centered alternating */}
+        {/* Desktop Layout - Unified Left/Right */}
         <div className="hidden md:block relative">
-          {/* Center Timeline Line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/20 via-accent/60 to-accent/20" />
+          {/* Continuous Vertical Line - Centered */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/10 via-accent/40 to-accent/10" />
 
           {/* Nodes */}
-          <div className="space-y-16">
+          <div className="space-y-0">
             {nodes.map((node, index) => {
-              const isLeft = index % 2 === 0; // 0, 2 = left; 1, 3 = right
+              const isLast = index === nodes.length - 1;
 
               return (
-                <div key={index} className="relative">
-                  {/* Node Circle - Center */}
-                  <div
-                    className={`absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border-2 transition-all duration-300 z-10 ${
-                      hoveredIndex === index
-                        ? "bg-accent border-accent scale-150 shadow-lg shadow-accent/50"
-                        : "bg-surface-elevated border-accent/60"
-                    }`}
-                  >
-                    <div
-                      className={`absolute inset-1 rounded-full transition-colors ${
-                        hoveredIndex === index ? "bg-white" : "bg-accent/60"
-                      }`}
-                    />
-                  </div>
+                <div
+                  key={index}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    ...getNodeStyle(index),
+                    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                >
+                  <div className="grid grid-cols-2 gap-x-16 py-12">
 
-                  {/* Content - Alternating sides */}
-                  <div
-                    className={`flex items-start ${isLeft ? "justify-end pr-[calc(50%+2rem)]" : "justify-start pl-[calc(50%+2rem)]"}`}
-                    style={{
-                      ...getNodeStyle(index),
-                      transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                    }}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <div className={`max-w-xl ${isLeft ? "text-right" : "text-left"}`}>
+                    {/* LEFT COLUMN: Main Content */}
+                    <div
+                      className="flex flex-col items-end text-right transition-all duration-500 ease-out"
+                      style={hoveredIndex === index ? { transform: "translateX(-4px)" } : {}}
+                    >
                       {/* Image */}
                       {node.image && (
                         <div
-                          className={`relative w-[512px] aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group mb-3 ${
-                            isLeft ? "ml-auto" : "mr-auto"
-                          }`}
+                          className="relative w-full max-w-lg aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group/image mb-6 shadow-xl"
                           onClick={() => setModalImage(node.image!)}
                         >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={node.image}
                             alt={node.title}
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110"
                           />
-                          {/* Hover overlay */}
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                            <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                              <div className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                                <svg
-                                  className="w-4 h-4 text-gray-900"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                                  />
-                                </svg>
-                              </div>
+                          <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/20 transition-colors flex items-center justify-center">
+                            <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-all duration-300 transform translate-y-4 group-hover/image:translate-y-0">
+                              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                              </svg>
                             </div>
                           </div>
                         </div>
                       )}
 
-                      {/* Text Content */}
-                      <div>
-                        <span className="text-sm font-semibold text-accent">{node.year}</span>
-                        <h3 className="text-lg font-semibold text-text-primary mt-1 mb-1">
-                          {node.title}
-                        </h3>
-                        <p className="text-text-secondary text-sm leading-relaxed">
-                          {node.description}
-                        </p>
+                      {/* Header Info */}
+                      <div className="flex items-center justify-end gap-3 mb-2">
+                        {node.tag && (
+                          <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)] animate-pulse-slow">
+                            {node.tag}
+                          </span>
+                        )}
+                        <span className="text-xl font-bold text-accent tracking-normal">{node.year}</span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-text-primary mb-3">{node.title}</h3>
+                      <p className="text-text-secondary text-base leading-relaxed max-w-md">{node.description}</p>
+                    </div>
+
+                    {/* CENTER: Node Indicator */}
+                    <div className="absolute left-1/2 top-12 -translate-x-1/2 flex justify-center z-20">
+                      <div
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 ${hoveredIndex === index
+                          ? "bg-accent border-accent scale-150 shadow-lg shadow-accent/50"
+                          : "bg-surface-elevated border-accent/40"
+                          }`}
+                      >
+                        <div
+                          className={`absolute inset-0.5 rounded-full transition-colors ${hoveredIndex === index ? "bg-white" : "bg-transparent"
+                            }`}
+                        />
                       </div>
                     </div>
+
+                    {/* RIGHT COLUMN: Details */}
+                    <div
+                      className="flex flex-col items-start text-left pt-0 transition-all duration-500 ease-out"
+                      style={hoveredIndex === index ? { transform: "translateX(4px)" } : {}}
+                    >
+                      {node.details && (
+                        <div className="max-w-lg w-full">
+                          {/* Focus */}
+                          {node.details.focus && (
+                            <div className="mb-8">
+                              <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Focus</h4>
+                              <p className="text-text-secondary text-base font-medium leading-relaxed">{node.details.focus}</p>
+                            </div>
+                          )}
+
+                          {/* Designed */}
+                          {node.details.designed && (
+                            <div className="mb-10">
+                              <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">What I Designed</h4>
+                              <ul className="space-y-3">
+                                {node.details.designed.map((item, i) => (
+                                  <li key={i} className="text-text-secondary text-base leading-relaxed flex items-start gap-3">
+                                    <span className="text-accent mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Impact */}
+                          {node.details.impact && (
+                            <div className="pt-6 border-t border-white/10 w-full">
+                              <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Impact</h4>
+                              <p className="text-text-secondary text-base font-medium leading-relaxed">{node.details.impact}</p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
                   </div>
 
-                  {/* Horizontal connector line */}
-                  <div
-                    className={`absolute top-2 h-0.5 bg-gradient-to-r ${
-                      isLeft
-                        ? "from-transparent to-accent/60 right-1/2 w-8 mr-2"
-                        : "from-accent/60 to-transparent left-1/2 w-8 ml-2"
-                    }`}
-                  />
+                  {/* Section Separator (Divider) */}
+                  {!isLast && (
+                    <div className="absolute bottom-0 left-0 right-0 flex justify-center opacity-20">
+                      <div className="w-1/3 border-b border-dashed border-white/50" />
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Mobile Layout - Vertical */}
-        <div className="md:hidden relative">
-          {/* Timeline Line */}
+        {/* Mobile Layout - Vertical (unchanged mostly, just minor tweaks) */}
+        <div className="md:hidden relative mt-16">
           <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/20 via-accent/60 to-accent/20" />
 
-          {/* Nodes */}
-          <div className="space-y-8">
+          <div className="space-y-12">
             {nodes.map((node, index) => (
               <div
                 key={index}
@@ -163,30 +199,24 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                {/* Node Circle */}
                 <div
-                  className={`absolute left-4 w-4 h-4 rounded-full border-2 transition-all duration-300 -translate-x-1/2 mt-1 ${
-                    hoveredIndex === index
-                      ? "bg-accent border-accent scale-150 shadow-lg shadow-accent/50"
-                      : "bg-surface-elevated border-accent/60"
-                  }`}
+                  className={`absolute left-4 w-4 h-4 rounded-full border-2 transition-all duration-300 -translate-x-1/2 mt-1 ${hoveredIndex === index
+                    ? "bg-accent border-accent scale-150 shadow-lg shadow-accent/50"
+                    : "bg-surface-elevated border-accent/60"
+                    }`}
                 >
                   <div
-                    className={`absolute inset-1 rounded-full transition-colors ${
-                      hoveredIndex === index ? "bg-white" : "bg-accent/60"
-                    }`}
+                    className={`absolute inset-1 rounded-full transition-colors ${hoveredIndex === index ? "bg-white" : "bg-accent/60"
+                      }`}
                   />
                 </div>
 
-                {/* Content */}
                 <div>
-                  {/* Image */}
                   {node.image && (
                     <div
-                      className="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group mb-3"
+                      className="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group mb-4"
                       onClick={() => setModalImage(node.image!)}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={node.image}
                         alt={node.title}
@@ -196,13 +226,51 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                     </div>
                   )}
 
-                  <span className="text-sm font-semibold text-accent">{node.year}</span>
-                  <h3 className="text-base font-semibold text-text-primary mt-1 mb-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-sm font-semibold text-accent">{node.year}</span>
+                    {node.tag && (
+                      <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)]">
+                        {node.tag}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-2">
                     {node.title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">
+                  <p className="text-text-secondary text-base leading-relaxed mb-4">
                     {node.description}
                   </p>
+
+                  {/* Mobile Details */}
+                  {node.details && (
+                    <div className="bg-surface-elevated/50 p-4 rounded-lg border border-white/5 space-y-4">
+                      {node.details.focus && (
+                        <div>
+                          <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1 opacity-70">Focus</h4>
+                          <p className="text-text-primary text-sm font-medium">{node.details.focus}</p>
+                        </div>
+                      )}
+                      {node.details.designed && (
+                        <div>
+                          <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-2 opacity-70">What I Designed</h4>
+                          <ul className="space-y-1">
+                            {node.details.designed.map((item, i) => (
+                              <li key={i} className="text-text-secondary text-sm flex gap-2">
+                                <span className="text-accent mt-1.5 w-1 h-1 rounded-full bg-accent shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {node.details.impact && (
+                        <div className="pt-3 border-t border-white/10">
+                          <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1 opacity-70">Impact</h4>
+                          <p className="text-white text-sm font-medium">{node.details.impact}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
