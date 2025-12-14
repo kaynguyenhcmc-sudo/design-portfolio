@@ -1,0 +1,69 @@
+<svg width="1400" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="impactBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#impactBg)"/>
+  
+  <!-- Title -->
+  <text x="700" y="80" text-anchor="middle" fill="#f3f4f6" font-family="system-ui" font-size="32" font-weight="600">Multi-Year Impact Summary</text>
+  <text x="700" y="115" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="16">Redaction Studio Transformation 2024–2026</text>
+  
+  <!-- Timeline line -->
+  <rect x="150" y="200" width="1100" height="4" rx="2" fill="#374151"/>
+  
+  <!-- 2024 Node -->
+  <circle cx="250" cy="202" r="20" fill="#3b82f6"/>
+  <text x="250" y="208" text-anchor="middle" fill="white" font-family="system-ui" font-size="12" font-weight="600">24</text>
+  <rect x="150" y="250" width="280" height="380" rx="12" fill="#111827" stroke="#374151"/>
+  <text x="290" y="290" text-anchor="middle" fill="#3b82f6" font-family="system-ui" font-size="18" font-weight="600">Redaction 2.0</text>
+  <text x="290" y="320" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="13">Speed & Usability</text>
+  
+  <rect x="180" y="350" width="220" height="60" rx="8" fill="#1f2937"/>
+  <text x="290" y="378" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="28" font-weight="600">70%</text>
+  <text x="290" y="398" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="11">Faster workflow</text>
+  
+  <text x="180" y="450" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Bulk redaction</text>
+  <text x="180" y="480" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Face grouping</text>
+  <text x="180" y="510" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Improved tracking</text>
+  <text x="180" y="540" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Keyboard shortcuts</text>
+  
+  <!-- 2025 Node -->
+  <circle cx="700" cy="202" r="20" fill="#f59e0b"/>
+  <text x="700" y="208" text-anchor="middle" fill="white" font-family="system-ui" font-size="12" font-weight="600">25</text>
+  <rect x="560" y="250" width="280" height="380" rx="12" fill="#111827" stroke="#374151"/>
+  <text x="700" y="290" text-anchor="middle" fill="#f59e0b" font-family="system-ui" font-size="18" font-weight="600">AI Expansion</text>
+  <text x="700" y="320" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="13">Multi-Modal AI</text>
+  
+  <rect x="590" y="350" width="220" height="60" rx="8" fill="#1f2937"/>
+  <text x="700" y="378" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="28" font-weight="600">+3</text>
+  <text x="700" y="398" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="11">New AI models</text>
+  
+  <text x="590" y="450" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Audio PII redaction</text>
+  <text x="590" y="480" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Handwriting detection</text>
+  <text x="590" y="510" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ ID card recognition</text>
+  <text x="590" y="540" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Screen detection</text>
+  
+  <!-- 2026 Node -->
+  <circle cx="1150" cy="202" r="20" fill="#22c55e"/>
+  <text x="1150" y="208" text-anchor="middle" fill="white" font-family="system-ui" font-size="12" font-weight="600">26</text>
+  <rect x="1010" y="250" width="280" height="380" rx="12" fill="#111827" stroke="#374151"/>
+  <text x="1150" y="290" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="18" font-weight="600">Evidence Redesign</text>
+  <text x="1150" y="320" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="13">Unified Platform</text>
+  
+  <rect x="1040" y="350" width="220" height="60" rx="8" fill="#1f2937"/>
+  <text x="1150" y="378" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="28" font-weight="600">10 min</text>
+  <text x="1150" y="398" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="11">Constant AI processing</text>
+  
+  <text x="1040" y="450" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ New navigation</text>
+  <text x="1040" y="480" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Unified patterns</text>
+  <text x="1040" y="510" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Cross-modal workflows</text>
+  <text x="1040" y="540" fill="#f3f4f6" font-family="system-ui" font-size="12">✓ Future-proof design</text>
+  
+  <!-- Bottom tagline -->
+  <text x="700" y="670" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="14">Transforming mission-critical workflows for public safety agencies worldwide</text>
+</svg>
+

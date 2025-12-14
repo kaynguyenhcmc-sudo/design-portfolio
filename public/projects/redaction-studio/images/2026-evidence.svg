@@ -1,0 +1,133 @@
+<svg width="1400" height="875" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#0a0a0b"/>
+  
+  <!-- App frame -->
+  <rect x="50" y="40" width="1300" height="795" rx="12" fill="#111827" stroke="#374151"/>
+  
+  <!-- Top navigation bar -->
+  <rect x="50" y="40" width="1300" height="52" rx="12" fill="#0f172a"/>
+  <circle cx="78" cy="66" r="6" fill="#ef4444"/>
+  <circle cx="100" cy="66" r="6" fill="#f59e0b"/>
+  <circle cx="122" cy="66" r="6" fill="#22c55e"/>
+  
+  <!-- Logo area -->
+  <rect x="160" y="52" width="100" height="28" rx="4" fill="#3b82f6"/>
+  <text x="210" y="71" text-anchor="middle" fill="white" font-family="system-ui" font-size="12" font-weight="600">AXON</text>
+  
+  <!-- Top nav items -->
+  <text x="320" y="71" fill="#9ca3af" font-family="system-ui" font-size="13">Evidence</text>
+  <text x="420" y="71" fill="#f3f4f6" font-family="system-ui" font-size="13" font-weight="500">Redaction</text>
+  <rect x="400" y="80" width="60" height="2" fill="#3b82f6"/>
+  <text x="540" y="71" fill="#9ca3af" font-family="system-ui" font-size="13">Reports</text>
+  <text x="640" y="71" fill="#9ca3af" font-family="system-ui" font-size="13">Settings</text>
+  
+  <!-- Search bar -->
+  <rect x="900" y="52" width="300" height="28" rx="14" fill="#1f2937"/>
+  <text x="930" y="71" fill="#6b7280" font-family="system-ui" font-size="12">Search evidence...</text>
+  
+  <!-- User avatar -->
+  <circle cx="1280" cy="66" r="14" fill="#374151"/>
+  
+  <!-- Left sidebar -->
+  <rect x="50" y="92" width="220" height="743" fill="#0f172a"/>
+  
+  <!-- Sidebar items -->
+  <rect x="70" y="120" width="180" height="36" rx="6" fill="#3b82f6" opacity="0.2"/>
+  <text x="90" y="143" fill="#3b82f6" font-family="system-ui" font-size="13">📁 All Evidence</text>
+  <text x="90" y="183" fill="#9ca3af" font-family="system-ui" font-size="13">📹 Videos (24)</text>
+  <text x="90" y="223" fill="#9ca3af" font-family="system-ui" font-size="13">🎤 Audio (8)</text>
+  <text x="90" y="263" fill="#9ca3af" font-family="system-ui" font-size="13">📷 Images (156)</text>
+  <text x="90" y="303" fill="#9ca3af" font-family="system-ui" font-size="13">📄 Documents (12)</text>
+  
+  <!-- Divider -->
+  <rect x="70" y="340" width="180" height="1" fill="#374151"/>
+  
+  <text x="90" y="383" fill="#9ca3af" font-family="system-ui" font-size="13">⏱️ Recent</text>
+  <text x="90" y="423" fill="#9ca3af" font-family="system-ui" font-size="13">⭐ Starred</text>
+  <text x="90" y="463" fill="#9ca3af" font-family="system-ui" font-size="13">🗑️ Trash</text>
+  
+  <!-- Main content area -->
+  <rect x="290" y="112" width="720" height="703" rx="8" fill="#1f2937"/>
+  
+  <!-- Video preview -->
+  <rect x="310" y="132" width="680" height="380" rx="6" fill="#0a0a0b"/>
+  
+  <!-- Video with redaction overlays -->
+  <rect x="430" y="200" width="80" height="100" rx="4" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <rect x="580" y="220" width="90" height="110" rx="4" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <rect x="750" y="190" width="70" height="90" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+  
+  <!-- Play button -->
+  <circle cx="650" cy="322" r="32" fill="#3b82f6"/>
+  <polygon points="642,306 642,338 668,322" fill="white"/>
+  
+  <!-- Video controls -->
+  <rect x="310" y="492" width="680" height="40" rx="4" fill="#111827"/>
+  <rect x="330" y="508" width="400" height="8" rx="4" fill="#374151"/>
+  <rect x="330" y="508" width="160" height="8" rx="4" fill="#3b82f6"/>
+  <circle cx="490" cy="512" r="6" fill="white"/>
+  <text x="760" y="518" fill="#9ca3af" font-family="system-ui" font-size="12">02:34 / 08:15</text>
+  
+  <!-- Timeline with markers -->
+  <rect x="310" y="552" width="680" height="80" rx="6" fill="#111827"/>
+  <text x="330" y="578" fill="#9ca3af" font-family="system-ui" font-size="11">TIMELINE</text>
+  
+  <!-- Track 1 - Video -->
+  <rect x="330" y="592" width="640" height="24" rx="3" fill="#374151"/>
+  <rect x="380" y="592" width="60" height="24" rx="3" fill="#ef4444" opacity="0.6"/>
+  <rect x="520" y="592" width="40" height="24" rx="3" fill="#ef4444" opacity="0.6"/>
+  <rect x="620" y="592" width="80" height="24" rx="3" fill="#22c55e" opacity="0.6"/>
+  
+  <!-- Evidence info -->
+  <rect x="310" y="652" width="680" height="143" rx="6" fill="#111827"/>
+  <text x="330" y="682" fill="#f3f4f6" font-family="system-ui" font-size="14" font-weight="500">Evidence #BWC-2026-0847</text>
+  <text x="330" y="710" fill="#9ca3af" font-family="system-ui" font-size="12">Officer: M. Johnson • Recorded: Jan 15, 2026 • Duration: 8:15</text>
+  
+  <rect x="330" y="730" width="80" height="28" rx="4" fill="#3b82f6" opacity="0.2"/>
+  <text x="370" y="749" text-anchor="middle" fill="#3b82f6" font-family="system-ui" font-size="11">Traffic Stop</text>
+  <rect x="420" y="730" width="60" height="28" rx="4" fill="#374151"/>
+  <text x="450" y="749" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="11">DUI</text>
+  <rect x="490" y="730" width="80" height="28" rx="4" fill="#374151"/>
+  <text x="530" y="749" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="11">In Progress</text>
+  
+  <!-- Right panel - Redaction tools -->
+  <rect x="1030" y="112" width="300" height="703" rx="8" fill="#1f2937"/>
+  
+  <text x="1060" y="148" fill="#f3f4f6" font-family="system-ui" font-size="14" font-weight="600">Redaction Panel</text>
+  
+  <!-- Quick actions -->
+  <rect x="1050" y="168" width="260" height="100" rx="6" fill="#111827"/>
+  <text x="1070" y="195" fill="#9ca3af" font-family="system-ui" font-size="11">QUICK ACTIONS</text>
+  <rect x="1070" y="210" width="100" height="36" rx="4" fill="#3b82f6"/>
+  <text x="1120" y="233" text-anchor="middle" fill="white" font-family="system-ui" font-size="12">Run AI</text>
+  <rect x="1190" y="210" width="100" height="36" rx="4" fill="#374151"/>
+  <text x="1240" y="233" text-anchor="middle" fill="#9ca3af" font-family="system-ui" font-size="12">Manual</text>
+  
+  <!-- Detection summary -->
+  <rect x="1050" y="288" width="260" height="160" rx="6" fill="#111827"/>
+  <text x="1070" y="318" fill="#9ca3af" font-family="system-ui" font-size="11">DETECTED OBJECTS</text>
+  
+  <rect x="1070" y="338" width="220" height="40" rx="4" fill="#1f2937"/>
+  <circle cx="1095" cy="358" r="12" fill="#ef4444" opacity="0.3"/>
+  <text x="1120" y="363" fill="#f3f4f6" font-family="system-ui" font-size="12">Faces</text>
+  <text x="1260" y="363" fill="#ef4444" font-family="system-ui" font-size="12">3</text>
+  
+  <rect x="1070" y="388" width="220" height="40" rx="4" fill="#1f2937"/>
+  <circle cx="1095" cy="408" r="12" fill="#f59e0b" opacity="0.3"/>
+  <text x="1120" y="413" fill="#f3f4f6" font-family="system-ui" font-size="12">License Plates</text>
+  <text x="1260" y="413" fill="#f59e0b" font-family="system-ui" font-size="12">1</text>
+  
+  <!-- Export section -->
+  <rect x="1050" y="468" width="260" height="100" rx="6" fill="#111827"/>
+  <text x="1070" y="498" fill="#9ca3af" font-family="system-ui" font-size="11">EXPORT</text>
+  <rect x="1070" y="518" width="220" height="36" rx="4" fill="#22c55e"/>
+  <text x="1180" y="541" text-anchor="middle" fill="white" font-family="system-ui" font-size="12">Export Redacted</text>
+  
+  <!-- Status -->
+  <rect x="1050" y="588" width="260" height="80" rx="6" fill="#111827"/>
+  <text x="1070" y="618" fill="#9ca3af" font-family="system-ui" font-size="11">STATUS</text>
+  <rect x="1070" y="633" width="60" height="20" rx="10" fill="#f59e0b"/>
+  <text x="1100" y="647" text-anchor="middle" fill="white" font-family="system-ui" font-size="10">In Progress</text>
+  <text x="1145" y="647" fill="#9ca3af" font-family="system-ui" font-size="11">• 2 items need review</text>
+</svg>
+
