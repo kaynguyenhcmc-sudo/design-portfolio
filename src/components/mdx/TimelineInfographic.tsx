@@ -11,7 +11,11 @@ interface TimelineNode {
   details?: {
     focus?: string;
     designed?: string[];
-    impact?: string;
+    analysis?: string;
+    design?: string;
+    research_plan?: string;
+    impact?: string | string[];
+    problem?: string;
   };
 }
 
@@ -44,6 +48,32 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
       return { transform: "scale(1.02)", zIndex: 10 };
     }
     return { opacity: 0.5, filter: "brightness(0.7)" };
+  };
+
+  const renderImpactContent = (impact: string | string[]) => {
+    if (Array.isArray(impact)) {
+      return (
+        <div className="space-y-4">
+          {impact.map((item, i) => {
+            const parts = item.split(":");
+            const hasLabel = parts.length > 1;
+            return (
+              <p key={i} className="text-text-secondary text-base leading-relaxed">
+                {hasLabel ? (
+                  <>
+                    <strong className="text-white">{parts[0]}:</strong>
+                    <span>{parts.slice(1).join(":").trim()}</span>
+                  </>
+                ) : (
+                  item
+                )}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+    return <p className="text-text-secondary text-base leading-relaxed">{impact}</p>;
   };
 
   return (
@@ -102,7 +132,7 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                       {/* Header Info */}
                       <div className="flex items-center justify-end gap-3 mb-2">
                         {node.tag && (
-                          <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)] animate-pulse-slow">
+                          <span className="px-2 py-0.5 text-xs uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)] animate-pulse-slow">
                             {node.tag}
                           </span>
                         )}
@@ -135,34 +165,72 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                     >
                       {node.details && (
                         <div className="max-w-lg w-full">
-                          {/* Focus */}
+                          {/* Focus Points Header - Only show if any of the new fields exist */}
+                          {(node.details.problem || node.details.analysis || node.details.design || node.details.research_plan || node.details.focus || node.details.designed) && (
+                            <div className="mb-6">
+                              <h4 className="text-sm font-bold text-accent uppercase tracking-widest mb-4 border-b border-accent/20 pb-2">FOCUS POINTS:</h4>
+                            </div>
+                          )}
+
+                          {/* Problem */}
+                          {node.details.problem && (
+                            <div className="mb-6">
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Goal</h4>
+                              <p className="text-text-secondary text-base leading-relaxed">{node.details.problem}</p>
+                            </div>
+                          )}
+
+                          {/* Analysis */}
+                          {node.details.analysis && (
+                            <div className="mb-6">
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Analysis</h4>
+                              <p className="text-text-secondary text-base leading-relaxed">{node.details.analysis}</p>
+                            </div>
+                          )}
+
+                          {/* Design */}
+                          {node.details.design && (
+                            <div className="mb-6">
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Design</h4>
+                              <p className="text-text-secondary text-base leading-relaxed">{node.details.design}</p>
+                            </div>
+                          )}
+
+                          {/* Research Plan */}
+                          {node.details.research_plan && (
+                            <div className="mb-6">
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Research Plan</h4>
+                              <p className="text-text-secondary text-base leading-relaxed">{node.details.research_plan}</p>
+                            </div>
+                          )}
+
+                          {/* Result */}
+                          {node.details.impact && (
+                            <div className="mb-6">
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Result</h4>
+                              {renderImpactContent(node.details.impact)}
+                            </div>
+                          )}
+
+                          {/* Focus (Legacy support) */}
                           {node.details.focus && (
                             <div className="mb-8">
-                              <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Focus</h4>
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Focus</h4>
                               <p className="text-text-secondary text-base font-medium leading-relaxed">{node.details.focus}</p>
                             </div>
                           )}
 
-                          {/* Designed */}
+                          {/* Designed (Legacy support) */}
                           {node.details.designed && (
                             <div className="mb-10">
-                              <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">What I Designed</h4>
+                              <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">What I Designed</h4>
                               <ul className="space-y-3">
                                 {node.details.designed.map((item, i) => (
-                                  <li key={i} className="text-text-secondary text-base leading-relaxed flex items-start gap-3">
-                                    <span className="text-accent mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                                    <span>{item}</span>
+                                  <li key={i} className="text-text-secondary text-base leading-relaxed">
+                                    {item}
                                   </li>
                                 ))}
                               </ul>
-                            </div>
-                          )}
-
-                          {/* Impact */}
-                          {node.details.impact && (
-                            <div className="pt-6 border-t border-white/10 w-full">
-                              <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Impact</h4>
-                              <p className="text-text-secondary text-base font-medium leading-relaxed">{node.details.impact}</p>
                             </div>
                           )}
                         </div>
@@ -229,7 +297,7 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-sm font-semibold text-accent">{node.year}</span>
                     {node.tag && (
-                      <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)]">
+                      <span className="px-2 py-0.5 text-xs uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)]">
                         {node.tag}
                       </span>
                     )}
@@ -244,29 +312,81 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                   {/* Mobile Details */}
                   {node.details && (
                     <div className="bg-surface-elevated/50 p-4 rounded-lg border border-white/5 space-y-4">
+                      {/* Focus Points Header for Mobile */}
+                      {(node.details.problem || node.details.analysis || node.details.design || node.details.research_plan || node.details.focus || node.details.designed) && (
+                        <div className="mb-2 border-b border-white/10 pb-2">
+                          <h4 className="text-xs font-bold text-accent uppercase tracking-widest">FOCUS POINTS:</h4>
+                        </div>
+                      )}
+
+                      {node.details.problem && (
+                        <div>
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1 opacity-100">Goal</h4>
+                          <p className="text-text-primary text-sm font-medium">{node.details.problem}</p>
+                        </div>
+                      )}
+                      {node.details.analysis && (
+                        <div>
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1 opacity-100">Analysis</h4>
+                          <p className="text-text-primary text-sm font-medium">{node.details.analysis}</p>
+                        </div>
+                      )}
+                      {node.details.design && (
+                        <div>
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1 opacity-100">Design</h4>
+                          <p className="text-text-primary text-sm font-medium">{node.details.design}</p>
+                        </div>
+                      )}
+                      {node.details.research_plan && (
+                        <div>
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1 opacity-100">Research Plan</h4>
+                          <p className="text-text-primary text-sm font-medium">{node.details.research_plan}</p>
+                        </div>
+                      )}
+                      {node.details.impact && (
+                        <div className="">
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Result</h4>
+                          {Array.isArray(node.details.impact) ? (
+                            <div className="space-y-4">
+                              {node.details.impact.map((item, i) => {
+                                const parts = item.split(":");
+                                const hasLabel = parts.length > 1;
+                                return (
+                                  <p key={i} className="text-white text-sm font-medium leading-relaxed">
+                                    {hasLabel ? (
+                                      <>
+                                        <strong className="text-accent">{parts[0]}:</strong>
+                                        <span className="text-white/80">{parts.slice(1).join(":").trim()}</span>
+                                      </>
+                                    ) : (
+                                      item
+                                    )}
+                                  </p>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <p className="text-white text-sm font-medium">{node.details.impact}</p>
+                          )}
+                        </div>
+                      )}
+
                       {node.details.focus && (
                         <div>
-                          <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1 opacity-70">Focus</h4>
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">Focus</h4>
                           <p className="text-text-primary text-sm font-medium">{node.details.focus}</p>
                         </div>
                       )}
                       {node.details.designed && (
                         <div>
-                          <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-2 opacity-70">What I Designed</h4>
+                          <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-1">What I Designed</h4>
                           <ul className="space-y-1">
                             {node.details.designed.map((item, i) => (
-                              <li key={i} className="text-text-secondary text-sm flex gap-2">
-                                <span className="text-accent mt-1.5 w-1 h-1 rounded-full bg-accent shrink-0" />
-                                <span>{item}</span>
+                              <li key={i} className="text-text-secondary text-sm">
+                                {item}
                               </li>
                             ))}
                           </ul>
-                        </div>
-                      )}
-                      {node.details.impact && (
-                        <div className="pt-3 border-t border-white/10">
-                          <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1 opacity-70">Impact</h4>
-                          <p className="text-white text-sm font-medium">{node.details.impact}</p>
                         </div>
                       )}
                     </div>

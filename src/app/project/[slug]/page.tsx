@@ -16,6 +16,7 @@ import MockupImage from "@/components/mdx/MockupImage";
 import QuoteCarousel from "@/components/mdx/QuoteCarousel";
 import VideoEmbed from "@/components/mdx/VideoEmbed";
 import TimelineInfographic from "@/components/mdx/TimelineInfographic";
+import BeforeAfterCarousel from "@/components/mdx/BeforeAfterCarousel";
 
 export const revalidate = 0;
 
@@ -35,6 +36,7 @@ const components = {
   QuoteCarousel,
   VideoEmbed,
   TimelineInfographic,
+  BeforeAfterCarousel,
   h1: ({ children }: { children: React.ReactNode }) => (
     <h1 className="text-4xl md:text-5xl font-semibold text-text-primary mb-6 leading-tight">
       {children}
@@ -117,11 +119,11 @@ export default async function ProjectPage({ params }: PageProps) {
             <span className="text-text-muted">•</span>
             <span className="text-text-muted text-sm">{project.timeline}</span>
           </div>
-          
+
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-text-primary leading-tight mb-4 animate-fade-in-up">
             {data.title || project.title}
           </h1>
-          
+
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-3xl animate-fade-in-up stagger-1">
             {data.description || project.description}
           </p>
@@ -131,8 +133,8 @@ export default async function ProjectPage({ params }: PageProps) {
       {/* MDX Content */}
       <article className="px-6 md:px-12 lg:px-20 pb-20">
         <div className="max-w-5xl mx-auto">
-          <MDXRemote 
-            source={content} 
+          <MDXRemote
+            source={content}
             components={components}
           />
         </div>

@@ -2,7 +2,7 @@
 title: "Axon Performance"
 role: "Product Designer"
 timeline: "2024"
-description: "Mô tả ngắn về project Axon Performance"
+description: "AI-Assisted Video Review, Sentiment Detection & Data Dashboards (Axon DEMS)"
 ---
 
 {/* 
@@ -29,33 +29,86 @@ description: "Mô tả ngắn về project Axon Performance"
      - Dùng Dropbox link: đổi dl=0 thành raw=1
 */}
 
+<Section title="Overview">
+Led UX design for the Performance application, supporting supervisors reviewing officer-recorded video for performance assessment, training opportunities, and commendation. Partnered closely with Product Management to define and iterate end-to-end video review, sentiment, and dashboard experiences, establishing a foundation for next-generation Performance workflows.
+</Section>
+
+<Section title="My Role">
+- Led UX design for the Performance application, enabling supervisors to review officer-recorded video for performance assessment, training opportunities, and commendation.
+- Led discovery research and validation using mockups and interactive prototypes to de-risk product direction before engineering investment.
+- Designed data-driven dashboards summarizing sentiment trends, review coverage, and performance signals to help supervisors prioritize what to review and understand the "why" behind the data.
+</Section>
+
 <HeroImage 
   src="/projects/axon-performance/images/hero.png" 
   alt="Axon Performance" 
-  tagline="Mô tả tagline cho hero"
+  tagline="AI-Assisted Video Review & Sentiment Detection"
 />
 
-<Section title="Overview">
-Nội dung overview ở đây...
+<Section title="Impact & Outcomes">
+  <KPIGroup>
+    <KPI 
+      metric="~30% Saved" 
+      label="De-risked engineering investment via early prototype data validation." 
+    />
+    <KPI 
+      metric="Zero Ambiguity" 
+      label="Eliminated data interpretation risks to ensure full legal compliance." 
+    />
+    <KPI 
+      metric="Validated AI Logic" 
+      label="Established validated sentiment thresholds to guide future model training." 
+    />
+  </KPIGroup>
 </Section>
 
-<KPIGroup>
-  <KPI metric="XX%" label="Metric 1" />
-  <KPI metric="XX" label="Metric 2" />
-  <KPI metric="+X" label="Metric 3" />
-</KPIGroup>
-
-<Section title="My Role">
-Mô tả vai trò...
-</Section>
-
-<Section title="Solution">
-<MockupImage 
-  src="/projects/axon-performance/images/mockup-1.png" 
-  alt="Mô tả hình" 
-  caption="Caption cho hình"
+<Section title="Showcase">
+<BeforeAfterCarousel 
+  pairs={[
+    {
+      before: "/projects/axon-performance/images/Before 1.png",
+      after: "/projects/axon-performance/images/After 1.png",
+      title: "Case 1: Dashboard Transformation",
+      group: "Dashboard Transformation",
+      description: "Transitioning from a simple Information Listing to a Data-driven & Alerting Dashboard.",
+      details: [
+        "Core Philosophy Shift: Transitioning from a simple 'Information Listing' approach to a 'Data-driven & Alerting Dashboard.'",
+        "Visual Interface (UI): Adopting a modern Dark Mode, which helps key metrics and charts 'pop' visually while significantly reducing eye strain during prolonged monitoring.",
+        "Strategic Color Coding: Utilizing high-contrast colors (Green for 'Good'/Red & Pink for 'Alert') against the dark background. This allows users to quickly scan and identify critical issues.",
+        "Data Structure Transformation: Moving from a chronological task list to a Performance Matrix. This layout allows for an immediate, high-level comparison of personnel performance across multiple KPIs.",
+        "Space Optimization: The sidebar and navigation controls have been collapsed and streamlined to maximize screen real estate for the Metrics and data visualization.",
+        "Conclusion: The new design drastically reduces cognitive load, enabling managers to instantly recognize high performers vs. those requiring attention, facilitating faster decision-making."
+      ]
+    },
+    {
+      before: "/projects/axon-performance/images/Before 2.png",
+      after: "/projects/axon-performance/images/After 2.png",
+      title: "Case 2: Performance Matrix",
+      group: "Dashboard Transformation",
+      description: "Visualizing performance data for instant comparison.",
+      details: [
+        "Core Philosophy Shift: Transitioning from a simple 'Information Listing' approach to a 'Data-driven & Alerting Dashboard.'",
+        "Visual Interface (UI): Adopting a modern Dark Mode, which helps key metrics and charts 'pop' visually while significantly reducing eye strain during prolonged monitoring.",
+        "Strategic Color Coding: Utilizing high-contrast colors (Green for 'Good'/Red & Pink for 'Alert') against the dark background. This allows users to quickly scan and identify critical issues.",
+        "Data Structure Transformation: Moving from a chronological task list to a Performance Matrix. This layout allows for an immediate, high-level comparison of personnel performance across multiple KPIs.",
+        "Space Optimization: The sidebar and navigation controls have been collapsed and streamlined to maximize screen real estate for the Metrics and data visualization.",
+        "Conclusion: The new design drastically reduces cognitive load, enabling managers to instantly recognize high performers vs. those requiring attention, facilitating faster decision-making."
+      ]
+    },
+    {
+      before: "/projects/axon-performance/images/Before 3.png",
+      after: "/projects/axon-performance/images/After 3.png",
+      title: "Case 3: Video Review Transformation",
+      group: "Video Review Transformation",
+      description: "Shifting from a manual checklist-heavy process to an AI-driven workflow.",
+      details: [
+        "From Manual to AI-Assisted Auditing: Shifting from a manual checklist-heavy process to an AI-driven workflow. The introduction of 'Sentiment auto summary' (e.g., Escalatory 88%) allows reviewers to prioritize high-risk interactions rather than passively watching hours of footage.",
+        "Contextual Situational Awareness: Replacing the isolated metadata list with an integrated 'Overview' panel that combines geolocation (Map View) and officer details directly next to the video. This provides immediate geographical and operational context without switching tabs.",
+        "Smart Non-Linear Navigation: Moving from a standard video progress bar to an intelligent timeline with 'Auto-generated markers.' This empowers users to jump instantly to critical events (like specific sentiments or flagged moments) instead of scrubbing through the video blindly.",
+        "Focused Cognitive Load: Redesigning the layout from a cluttered modal with over 15 distinct checkboxes to a clean, dark-themed command interface. This reduces visual noise, focusing the reviewer's attention strictly on the evidence and the automated insights."
+      ]
+    }
+  ]}
 />
-
-Nội dung solution...
 </Section>
 

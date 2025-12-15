@@ -1,9 +1,11 @@
 export { default as HeroImage } from './HeroImage';
 export { default as HeroVideo } from './HeroVideo';
 export { default as Section } from './Section';
+export { default as MockupImage } from './MockupImage';
+export { default as VideoEmbed } from './VideoEmbed';
+export { default as VideoModal } from './VideoModal';
 export { default as KPIGroup } from './KPIGroup';
 export { default as KPI } from './KPI';
-export { default as MockupImage } from './MockupImage';
 export { default as QuoteCarousel } from './QuoteCarousel';
-export { default as VideoEmbed } from './VideoEmbed';
 export { default as TimelineInfographic } from './TimelineInfographic';
+export { default as BeforeAfterCarousel } from './BeforeAfterCarousel';
