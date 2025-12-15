@@ -49,17 +49,31 @@ body {
 }
 
 /* Stagger animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
 
 /* Project card hover */
 .project-card {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
 }
 
 .project-card:hover {
@@ -77,8 +91,18 @@ body {
 
 /* Quote carousel */
 @keyframes fadeInOut {
-  0%, 100% { opacity: 0; transform: translateY(8px); }
-  10%, 90% { opacity: 1; transform: translateY(0); }
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .quote-animate {
@@ -98,7 +122,7 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(254, 198, 46, 0.5), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -124,12 +148,10 @@ body {
 
 /* Hero gradient overlay */
 .hero-gradient {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(10, 10, 11, 0.4) 50%,
-    rgba(10, 10, 11, 0.95) 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(10, 10, 11, 0.4) 50%,
+      rgba(10, 10, 11, 0.95) 100%);
 }
 
 /* Section divider */

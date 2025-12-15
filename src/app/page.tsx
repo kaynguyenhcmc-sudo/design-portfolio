@@ -150,7 +150,7 @@ export default async function HomePage() {
                   <Link
                     key={project.slug}
                     href={`/project/${project.slug}`}
-                    className="group block rounded-xl overflow-hidden bg-surface border border-white/5 hover:border-white/20 transition-all hover:-translate-y-1"
+                    className="group block rounded-xl overflow-hidden bg-surface border border-white/5 hover:border-accent/50 transition-all hover:-translate-y-1"
                   >
                     <div className="aspect-video bg-surface-elevated relative overflow-hidden">
                       {project.thumbnail ? (

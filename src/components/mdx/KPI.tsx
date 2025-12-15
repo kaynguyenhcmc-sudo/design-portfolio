@@ -14,7 +14,7 @@ export default function KPI({ title, metric, label }: KPIProps) {
           {title}
         </div>
       )}
-      <div className="text-4xl md:text-5xl font-semibold text-accent mb-2">
+      <div className="text-3xl md:text-4xl font-semibold text-accent mb-2">
         {metric}
       </div>
       <div className="text-sm md:text-base text-text-secondary">

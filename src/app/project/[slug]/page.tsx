@@ -144,20 +144,20 @@ export default async function ProjectPage({ params }: PageProps) {
       <section className="px-6 md:px-12 lg:px-20 py-16 md:py-20 bg-surface border-t border-border">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold text-text-primary mb-4">
-            Interested in working together?
+            Open to Collaboration
           </h2>
           <p className="text-text-secondary mb-8">
-            I&apos;m always open to discussing new projects and opportunities.
+            Always open to discussing product challenges and exploring potential collaborations.
           </p>
-          <a
-            href="mailto:hello@example.com"
+          <Link
+            href="/cv"
             className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-gray-900 font-medium rounded-lg transition-all hover:scale-105"
           >
-            <span>Get in touch</span>
+            <span>View my CV</span>
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       </section>
 
