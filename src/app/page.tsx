@@ -51,7 +51,7 @@ export default async function HomePage() {
               </p>
 
               <p>
-                I enjoy simplifying complexity, aligning cross-functional teams, vibe coding high-fidelity prototypes. It’s the workflow I use to build live sites—like this one—and functional products for clients.
+                I enjoy simplifying complexity, aligning cross-functional teams, <strong className="text-white">vibe coding high-fidelity prototypes</strong>. It’s the workflow I use to build live sites—like this one—and functional products for clients.
               </p>
 
               <div className="border-l-4 border-accent pl-6 py-2 mt-8">

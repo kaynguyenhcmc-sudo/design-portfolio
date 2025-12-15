@@ -10,9 +10,9 @@ interface MockupImageProps {
 
 export default function MockupImage({ src, alt, caption }: MockupImageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   // Convert relative paths to absolute paths for public folder
-  const imageSrc = src.startsWith("./") 
+  const imageSrc = src.startsWith("./")
     ? src.replace("./", "/projects/redaction-studio/")
     : src;
 
@@ -30,7 +30,7 @@ export default function MockupImage({ src, alt, caption }: MockupImageProps) {
   return (
     <>
       <figure className="mb-8 animate-fade-in">
-        <div 
+        <div
           className="mockup-container relative rounded-xl overflow-hidden bg-surface border border-border cursor-zoom-in"
           onClick={() => setIsModalOpen(true)}
         >
@@ -52,7 +52,7 @@ export default function MockupImage({ src, alt, caption }: MockupImageProps) {
 
       {/* Fullscreen Modal */}
       {isModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 video-modal-backdrop flex items-center justify-center p-4 cursor-zoom-out"
           onClick={() => setIsModalOpen(false)}
         >

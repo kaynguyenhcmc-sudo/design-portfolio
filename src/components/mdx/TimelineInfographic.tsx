@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 interface TimelineNode {
   year: string;
@@ -26,6 +27,11 @@ interface TimelineInfographicProps {
 export default function TimelineInfographic({ nodes }: TimelineInfographicProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -100,17 +106,30 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                     transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                 >
-                  <div className="grid grid-cols-2 gap-x-16 py-12">
+                  <div className="grid grid-cols-2 gap-x-16 py-8">
 
                     {/* LEFT COLUMN: Main Content */}
                     <div
-                      className="flex flex-col items-end text-right transition-all duration-500 ease-out"
+                      className="flex flex-col items-end text-right pt-0 transition-all duration-500 ease-out"
                       style={hoveredIndex === index ? { transform: "translateX(-4px)" } : {}}
                     >
+                      {/* Header Info */}
+                      <div className="flex items-center justify-end gap-3 mb-6">
+                        {node.tag && (
+                          <span className="px-2 py-0.5 text-xs uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)] animate-pulse-slow">
+                            {node.tag}
+                          </span>
+                        )}
+                        <span className="text-xl font-bold text-accent tracking-normal">{node.year}</span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-text-primary mb-3">{node.title}</h3>
+                      <p className="text-text-secondary text-base leading-relaxed max-w-md">{node.description}</p>
+
                       {/* Image */}
                       {node.image && (
                         <div
-                          className="relative w-full max-w-lg aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group/image mb-6 shadow-xl"
+                          className="relative w-full max-w-lg aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group/image mt-6 shadow-xl"
                           onClick={() => setModalImage(node.image!)}
                         >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -128,23 +147,10 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                           </div>
                         </div>
                       )}
-
-                      {/* Header Info */}
-                      <div className="flex items-center justify-end gap-3 mb-2">
-                        {node.tag && (
-                          <span className="px-2 py-0.5 text-xs uppercase tracking-wider font-bold bg-accent text-black rounded-full shadow-[0_0_10px_rgba(254,198,46,0.3)] animate-pulse-slow">
-                            {node.tag}
-                          </span>
-                        )}
-                        <span className="text-xl font-bold text-accent tracking-normal">{node.year}</span>
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-text-primary mb-3">{node.title}</h3>
-                      <p className="text-text-secondary text-base leading-relaxed max-w-md">{node.description}</p>
                     </div>
 
                     {/* CENTER: Node Indicator */}
-                    <div className="absolute left-1/2 top-12 -translate-x-1/2 flex justify-center z-20">
+                    <div className="absolute left-1/2 top-14 -translate-x-1/2 flex justify-center z-20">
                       <div
                         className={`w-4 h-4 rounded-full border-2 transition-all duration-300 ${hoveredIndex === index
                           ? "bg-accent border-accent scale-150 shadow-lg shadow-accent/50"
@@ -160,11 +166,11 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
 
                     {/* RIGHT COLUMN: Details */}
                     <div
-                      className="flex flex-col items-start text-left pt-0 transition-all duration-500 ease-out"
+                      className="flex flex-col items-start text-left pt-1 transition-all duration-500 ease-out"
                       style={hoveredIndex === index ? { transform: "translateX(4px)" } : {}}
                     >
                       {node.details && (
-                        <div className="max-w-lg w-full">
+                        <div className="w-full">
                           {/* Focus Points Header - Only show if any of the new fields exist */}
                           {(node.details.problem || node.details.analysis || node.details.design || node.details.research_plan || node.details.focus || node.details.designed) && (
                             <div className="mb-6">
@@ -280,20 +286,6 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                 </div>
 
                 <div>
-                  {node.image && (
-                    <div
-                      className="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group mb-4"
-                      onClick={() => setModalImage(node.image!)}
-                    >
-                      <img
-                        src={node.image}
-                        alt={node.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
-                    </div>
-                  )}
-
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-sm font-semibold text-accent">{node.year}</span>
                     {node.tag && (
@@ -308,6 +300,20 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                   <p className="text-text-secondary text-base leading-relaxed mb-4">
                     {node.description}
                   </p>
+
+                  {node.image && (
+                    <div
+                      className="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group mb-4"
+                      onClick={() => setModalImage(node.image!)}
+                    >
+                      <img
+                        src={node.image}
+                        alt={node.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
+                    </div>
+                  )}
 
                   {/* Mobile Details */}
                   {node.details && (
@@ -398,10 +404,10 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
         </div>
       </div>
 
-      {/* Image Modal */}
-      {modalImage && (
+      {/* Image Modal - Rendered via Portal to escape parent transforms */}
+      {mounted && modalImage && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setModalImage(null)}
         >
           <button
@@ -423,17 +429,18 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
           </div>
 
           <div
-            className="relative max-w-6xl w-full max-h-[90vh] overflow-auto rounded-xl"
+            className="relative w-full h-full flex items-center justify-center outline-none"
             onClick={(e) => e.stopPropagation()}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={modalImage}
               alt="Full size preview"
-              className="w-full h-auto rounded-xl"
+              className="max-w-[95vw] max-h-[95vh] object-contain rounded-xl shadow-2xl"
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
