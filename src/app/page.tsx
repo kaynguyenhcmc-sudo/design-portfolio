@@ -55,7 +55,7 @@ Hi, I'm <span className="text-accent">Khue Nguyen</span>
               </p>
 
               <p>
-                Previously, I shaped digital wallet products at <strong className="text-white">helloPay</strong> (acquired by Ant Financial), designing scalable and user-friendly payment flows across Southeast Asian markets.
+                Previously, I shaped digital wallet products at <strong className="text-white">helloPay</strong> (acquired by Ant Financial), designing scalable and user-friendly payment flows across Southeast Asia markets.
               </p>
 
               <p>
@@ -171,9 +171,9 @@ Hi, I'm <span className="text-accent">Khue Nguyen</span>
                   {/* Fallback image if project thumbnail isn't ideal or we want specifically the one from MDX */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://www.dropbox.com/scl/fi/xmn41hrnadjwp8mgp3s9u/Redaction-2.0.png?rlkey=n62jr0fqkezbzj960yfwgj647&raw=1"
+                    src="https://www.dropbox.com/scl/fi/39j6hapmukgaa0tuhzeig/Redaction-2.0-Thumbnail.png?rlkey=zcaud43ei3b3mm7we0chxl6ta&raw=1"
                     alt="Redaction Studio Interface"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
 
