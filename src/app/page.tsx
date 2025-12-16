@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects } from "@/lib/projects";
+import BackToTop from "@/components/BackToTop";
 
 export const revalidate = 0;
 
@@ -20,10 +21,12 @@ export default async function HomePage() {
             <Link href="/cv" className="text-lg font-medium tracking-tight text-text-secondary hover:text-accent transition-colors">CV</Link>
           </div>
           <a
-            href="mailto:hello@example.com"
+            href="https://vn.linkedin.com/in/bichkhue"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-text-secondary hover:text-accent transition-colors"
           >
-            Contact
+            LinkedIn
           </a>
         </nav>
       </header>
@@ -77,8 +80,9 @@ export default async function HomePage() {
               </Link>
 
               <a
-                href="/KhueNguyen_CV.pdf"
-                download
+                href="https://www.dropbox.com/scl/fi/qwlfbw79vl9fcru32x48h/CV_Khue-Nguyen_Product-Designer.pdf?rlkey=ynax4f9qnxg3kis4ya71ixtm2&st=ljagj267&dl=1"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 text-sm font-medium text-white transition-all hover:bg-white/10 hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 ring-offset-background"
               >
                 Download CV
@@ -221,14 +225,17 @@ export default async function HomePage() {
       {/* Footer */}
       <footer className="px-6 md:px-12 lg:px-20 py-10 border-t border-white/10 bg-black">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <BackToTop />
+
           <p className="text-text-muted text-sm">
             © {new Date().getFullYear()} All rights reserved.
           </p>
+
           <div className="flex items-center gap-8">
             <Link href="/cv" className="text-text-secondary hover:text-white transition-colors text-sm font-medium">
               CV
             </Link>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-white transition-colors text-sm font-medium">
+            <a href="https://vn.linkedin.com/in/bichkhue" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-white transition-colors text-sm font-medium">
               LinkedIn
             </a>
           </div>

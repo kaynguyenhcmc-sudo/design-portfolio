@@ -127,9 +127,11 @@ export default async function ProjectPage({ params }: PageProps) {
             {data.title || project.title}
           </h1>
 
-          <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-3xl animate-fade-in-up stagger-1">
-            {data.description || project.description}
-          </p>
+          {slug !== 'axon-performance' && slug !== 'axon-autotagging' && (
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-3xl animate-fade-in-up stagger-1">
+              {data.description || project.description}
+            </p>
+          )}
         </div>
       </header>
 
