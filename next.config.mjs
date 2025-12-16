@@ -8,6 +8,11 @@ const nextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  experimental: {
+    outputFileTracingIncludes: {
+      '/*': ['./src/content/**/*'],
+    },
+  },
 };
 
 const withMDX = createMDX({
