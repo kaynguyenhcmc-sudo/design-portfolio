@@ -36,7 +36,7 @@ export default async function HomePage() {
             <div className="text-lg md:text-xl text-text-secondary leading-relaxed w-full mb-12 space-y-6">
               <h1 className="mb-8">
                 <span className="block text-4xl md:text-6xl font-bold text-white tracking-tight mb-2">
-                  Hi, I’m <span className="text-accent">Khue Nguyen</span>.
+                  Hi, I’m <span className="text-accent">Khue Nguyen</span>
                 </span>
                 <span className="block text-xl md:text-3xl font-medium text-text-secondary/80 leading-relaxed">
                   Welcome, and thanks for visiting my portfolio.
@@ -68,12 +68,22 @@ export default async function HomePage() {
 
 
 
-            <Link
-              href="#work"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 text-sm font-medium text-black transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ring-offset-background"
-            >
-              View Work
-            </Link>
+            <div className="flex flex-wrap items-center gap-4 mt-8">
+              <Link
+                href="#work"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 text-sm font-medium text-black transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ring-offset-background"
+              >
+                View Work
+              </Link>
+
+              <a
+                href="/KhueNguyen_CV.pdf"
+                download
+                className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 text-sm font-medium text-white transition-all hover:bg-white/10 hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 ring-offset-background"
+              >
+                Download CV
+              </a>
+            </div>
 
             <div className="mt-16 w-full lg:w-[135%]">
               <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">Skills & Expertise</h3>

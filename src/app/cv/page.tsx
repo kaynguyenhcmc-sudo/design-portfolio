@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata = {
     title: "Resume | Khue Nguyen",
@@ -22,14 +23,27 @@ export default function ResumePage() {
                     </svg>
                     Back to Portfolio
                 </Link>
+
+                <a
+                    href="/KhueNguyen_CV.pdf"
+                    download
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-sm font-medium text-white transition-all hover:bg-white/10 hover:border-accent/40"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download CV
+                </a>
             </div>
 
             <div className="w-full max-w-4xl bg-surface p-8 md:p-12 rounded-lg shadow-2xl border border-white/5 mx-auto print:shadow-none print:border-none print:bg-white print:text-black">
 
                 {/* Header */}
-                <header className="flex flex-col md:flex-row justify-between items-start mb-16 gap-8">
-                    <div className="flex flex-col md:flex-row gap-8 items-start">
-                        <div className="relative w-32 h-32 shrink-0 rounded-full overflow-hidden border-2 border-white/10 print:border-gray-300">
+                <header className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
+                    <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                        <div className="relative w-32 h-32 shrink-0 rounded-full overflow-hidden border-2 border-white/10 print:border-gray-300 shadow-xl">
                             <Image
                                 src="/me.png"
                                 alt="Khue Nguyen"
@@ -37,25 +51,25 @@ export default function ResumePage() {
                                 className="object-cover"
                             />
                         </div>
-                        <div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 print:text-black">Khue Nguyen</h1>
-                            <p className="text-xl md:text-2xl text-accent font-medium mb-6 print:text-black">Product Designer</p>
+                        <div className="text-center md:text-left">
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 print:text-black tracking-tight">Khue Nguyen</h1>
+                            <p className="text-xl md:text-2xl text-accent font-medium mb-4 print:text-black">Product Designer</p>
 
-                            <div className="space-y-1 text-text-secondary print:text-gray-700">
+                            <div className="space-y-1.5 text-text-secondary print:text-gray-700 text-base">
                                 <p>bichkhue.nguyen@gmail.com</p>
                                 <p>+84 903 477 106</p>
-                                <div className="flex gap-4 mt-2">
-                                    <Link href="/" className="hover:text-accent underline transition-colors">portfolio.com</Link>
-                                    <a href="#" className="hover:text-accent underline transition-colors">linkedin</a>
+                                <div className="flex gap-4 justify-center md:justify-start pt-1">
+                                    <Link href="/" className="hover:text-accent border-b border-transparent hover:border-accent transition-colors">portfolio.com</Link>
+                                    <a href="#" className="hover:text-accent border-b border-transparent hover:border-accent transition-colors">linkedin</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-6 md:w-1/3 text-sm">
+                    <div className="flex flex-col gap-8 md:w-1/3 text-sm pt-1">
                         <div>
-                            <h3 className="text-accent font-bold uppercase tracking-wider mb-2 print:text-black print:font-bold">Skills</h3>
-                            <ul className="text-text-secondary space-y-1 print:text-gray-700">
+                            <h3 className="text-accent font-bold uppercase tracking-wider mb-3 print:text-black print:font-bold">Skills</h3>
+                            <ul className="text-text-secondary space-y-1.5 print:text-gray-700 leading-relaxed">
                                 <li>Product Design Interaction</li>
                                 <li>Design UX Strategy</li>
                                 <li>Systems Thinking</li>
@@ -66,9 +80,9 @@ export default function ResumePage() {
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-accent font-bold uppercase tracking-wider mb-2 print:text-black print:font-bold">Tools</h3>
-                            <p className="text-text-secondary print:text-gray-700">
-                                Figma Design, Figma Make, Cursor, Adobe CS, Jira, Google
+                            <h3 className="text-accent font-bold uppercase tracking-wider mb-3 print:text-black print:font-bold">Tools</h3>
+                            <p className="text-text-secondary print:text-gray-700 leading-relaxed">
+                                Figma Design, Figma Make, Cursor, Adobe CS, Jira, Google Suite, Gemini 3, ChatGPT
                             </p>
                         </div>
                     </div>
@@ -229,7 +243,24 @@ export default function ResumePage() {
                     </div>
                 </section>
 
+                {/* Footer Actions */}
+                <div className="flex justify-between items-center mt-12 pt-8 border-t border-white/10 print:hidden">
+                    <BackToTop />
+                    <a
+                        href="/KhueNguyen_CV.pdf"
+                        download
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-sm font-medium text-white transition-all hover:bg-white/10 hover:border-accent/40"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
+
             </div>
-        </main>
+        </main >
     );
 }
