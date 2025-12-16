@@ -51,7 +51,7 @@ export default async function HomePage() {
               </p>
 
               <p>
-                Often navigating ambiguous, high-scale problem spaces, I led the redesign of <strong className="text-white">'Redaction 2.0'</strong>—a core extension of this ecosystem. Rooted in a philosophy of <strong className="text-white">Human-AI collaboration</strong>, I reimagined this critical workflow to eliminate friction, building transparent interfaces that leverage automation for precision while ensuring users maintain full control.
+                Often navigating ambiguous, high-scale problem spaces, I led the redesign of <strong className="text-white">&apos;Redaction 2.0&apos;</strong>—a core extension of this ecosystem. Rooted in a philosophy of <strong className="text-white">Human-AI collaboration</strong>, I reimagined this critical workflow to eliminate friction, building transparent interfaces that leverage automation for precision while ensuring users maintain full control.
               </p>
 
               <p>
@@ -64,7 +64,7 @@ export default async function HomePage() {
 
               <div className="border-l-4 border-accent pl-6 py-2 mt-8">
                 <p className="text-xl md:text-2xl font-serif italic text-white/90">
-                  "Give me a one-page spec, and I’ll deliver a production-ready solution."
+                  &quot;Give me a one-page spec, and I’ll deliver a production-ready solution.&quot;
                 </p>
               </div>
             </div>
