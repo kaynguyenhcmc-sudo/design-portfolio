@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 
 interface TimelineNode {
@@ -306,10 +307,11 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                       className="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-elevated border border-border cursor-pointer group mb-4"
                       onClick={() => setModalImage(node.image!)}
                     >
-                      <img
+                      <Image
                         src={node.image}
                         alt={node.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
                     </div>
