@@ -68,7 +68,7 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                 {hasLabel ? (
                   <>
                     <strong className="text-white">{parts[0]}:</strong>
-                    <span>{parts.slice(1).join(":").trim()}</span>
+                    <span> {parts.slice(1).join(":").trim()}</span>
                   </>
                 ) : (
                   item
@@ -362,7 +362,7 @@ export default function TimelineInfographic({ nodes }: TimelineInfographicProps)
                                     {hasLabel ? (
                                       <>
                                         <strong className="text-accent">{parts[0]}:</strong>
-                                        <span className="text-white/80">{parts.slice(1).join(":").trim()}</span>
+                                        <span className="text-white/80"> {parts.slice(1).join(":").trim()}</span>
                                       </>
                                     ) : (
                                       item

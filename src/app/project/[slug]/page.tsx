@@ -17,6 +17,7 @@ import QuoteCarousel from "@/components/mdx/QuoteCarousel";
 import VideoEmbed from "@/components/mdx/VideoEmbed";
 import TimelineInfographic from "@/components/mdx/TimelineInfographic";
 import BeforeAfterCarousel from "@/components/mdx/BeforeAfterCarousel";
+import BackToTop from "@/components/BackToTop";
 
 export const revalidate = 0;
 
@@ -104,7 +105,9 @@ export default async function ProjectPage({ params }: PageProps) {
               </svg>
               <span>Back</span>
             </Link>
-            <div className="text-sm text-text-muted">{project.timeline}</div>
+            <div key={slug} className="text-sm text-text-secondary font-medium tracking-wide">
+              <span className="text-white">Khue Nguyen</span> <span className="mx-1 text-accent">•</span> {data.title || project.title} <span className="mx-1 text-accent">•</span> {project.timeline}
+            </div>
           </div>
         </div>
         {/* Gradient border */}
@@ -164,9 +167,7 @@ export default async function ProjectPage({ params }: PageProps) {
       {/* Footer */}
       <footer className="px-6 md:px-12 lg:px-20 py-8 border-t border-border">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-text-secondary hover:text-accent transition-colors text-sm">
-            ← Back to all projects
-          </Link>
+          <BackToTop />
           <p className="text-text-muted text-sm">
             © {new Date().getFullYear()}
           </p>

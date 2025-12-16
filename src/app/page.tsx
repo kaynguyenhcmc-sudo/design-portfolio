@@ -34,24 +34,29 @@ export default async function HomePage() {
           <div className="lg:col-span-8 animate-fade-in-up">
 
             <div className="text-lg md:text-xl text-text-secondary leading-relaxed w-full mb-12 space-y-6">
-              <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                Designing Trust for <span className="text-accent">Mission-Critical Systems.</span>
+              <h1 className="mb-8">
+                <span className="block text-4xl md:text-6xl font-bold text-white tracking-tight mb-2">
+                  Hi, I’m <span className="text-accent">Khue Nguyen</span>.
+                </span>
+                <span className="block text-xl md:text-3xl font-medium text-text-secondary/80 leading-relaxed">
+                  Welcome, and thanks for visiting my portfolio.
+                </span>
               </h1>
 
               <p>
-                As a <strong className="text-white">Product Designer</strong> at <strong className="text-white">Axon</strong>, I design end-to-end experiences for Digital Evidence Management Systems (DEMS), specializing in AI-assisted workflows including Performance optimization, Auto-Tagging, and Redaction—the masking of sensitive information in evidence.
+                As a <strong className="text-white">Product Designer</strong> at <strong className="text-white">Axon</strong>, I design end-to-end experiences within the Digital Evidence Management System (DEMS) ecosystem, specializing in AI-assisted workflows including Performance optimization, Auto-Tagging, and Redaction—the masking of sensitive information in evidence.
               </p>
 
               <p>
-                Often navigating ambiguous, high-scale problem spaces, I led the experience redesign for <strong className="text-white">'Redaction 2.0'</strong>—reimagining a critical workflow to eliminate user friction and churn. By focusing on intuitive interaction, I streamlined how users process video, image, and audio with greater precision.
+                Often navigating ambiguous, high-scale problem spaces, I led the redesign of <strong className="text-white">'Redaction 2.0'</strong>—a core extension of this ecosystem. Rooted in a philosophy of <strong className="text-white">Human-AI collaboration</strong>, I reimagined this critical workflow to eliminate friction, building transparent interfaces that leverage automation for precision while ensuring users maintain full control.
               </p>
 
               <p>
-                My design philosophy centers on <strong className="text-white">Human-AI collaboration</strong>; I build transparent, trustworthy interfaces that maintain user control while leveraging automation. Previously, I shaped digital wallet products at <strong className="text-white">helloPay</strong> (acquired by Ant Financial), designing scalable and user-friendly payment flows across diverse markets.
+                Previously, I shaped digital wallet products at <strong className="text-white">helloPay</strong> (acquired by Ant Financial), designing scalable and user-friendly payment flows across diverse markets.
               </p>
 
               <p>
-                I enjoy simplifying complexity, aligning cross-functional teams, <strong className="text-white">vibe coding high-fidelity prototypes</strong>. It’s the workflow I use to build live sites—like this one—and functional products for clients.
+                Beyond pixels, I enjoy simplifying complexity, aligning cross-functional teams, and <strong className="text-white">vibe coding high-fidelity prototypes</strong>. It’s the workflow I use to build live sites—like this one—and functional products for clients.
               </p>
 
               <div className="border-l-4 border-accent pl-6 py-2 mt-8">
@@ -69,6 +74,31 @@ export default async function HomePage() {
             >
               View Work
             </Link>
+
+            <div className="mt-16 w-full lg:w-[135%]">
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">Skills & Expertise</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "UX Research", "UI Design", "Design Systems", "Prototyping", "User Testing",
+                  "Figma", "FigmaMake", "Adobe Creative Suite", "HTML/CSS", "Accessibility",
+                  "AI-integrated Product Design", "Cross-functional Collaboration",
+                  "Vibe Coding", "Cursor", "Gemini 3", "Chatgpt"
+                ].map((skill) => {
+                  const isHighlighted = ["UX Research", "Prototyping", "User Testing", "AI-integrated Product Design", "Vibe Coding"].includes(skill);
+                  return (
+                    <span
+                      key={skill}
+                      className={`px-3 py-1.5 bg-surface-elevated rounded-md text-sm transition-colors cursor-default border ${isHighlighted
+                        ? "border-accent/60 text-white shadow-[0_0_10px_rgba(254,198,46,0.1)]"
+                        : "border-white/5 text-text-secondary hover:text-white hover:border-accent/40"
+                        }`}
+                    >
+                      {skill}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Portrait */}
