@@ -154,8 +154,8 @@ export default function ResumePage() {
                                 <div className="bg-surface-elevated/50 p-3 rounded text-sm print:bg-gray-100">
                                     <p className="font-semibold text-accent mb-1 print:text-black">Impact</p>
                                     <ul className="list-none space-y-0.5 text-text-secondary print:text-gray-700">
-                                        <li>• Delivered a unified Auto-Tagging experience across devices.</li>
-                                        <li>• Improved clarity and trust in AI suggestions.</li>
+                                        <li>• Delivered a unified Auto-Tagging experience across devices for over 1M users.</li>
+                                        <li>• Top 1 Win of Digital Evidence Management Systems in Q3 2025</li>
                                         <li>• Established reusable AI-review patterns for future automation features.</li>
                                     </ul>
                                 </div>
