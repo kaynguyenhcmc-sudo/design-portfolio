@@ -12,6 +12,7 @@ interface ComparisonPair {
     details?: string[];
     rationale?: string;
     group?: string;
+    videoUrl?: string; // Optional video demo URL (Dropbox/MP4)
 }
 
 interface BeforeAfterCarouselProps {
@@ -26,21 +27,31 @@ export default function BeforeAfterCarousel({
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
+    // Convert Dropbox share link to raw/direct link
+    const getDirectVideoUrl = (url: string): string => {
+        if (url.includes('dropbox.com')) {
+            return url.replace(/dl=0/, 'raw=1').replace(/&st=[^&]+/, '');
+        }
+        return url;
+    };
+
     // Handle Escape key and body scroll lock
     useEffect(() => {
-        if (isFullscreen) {
+        if (isFullscreen || isVideoModalOpen) {
             // Lock scroll
             document.body.style.overflow = "hidden";
 
             const handleKeyDown = (e: KeyboardEvent) => {
                 if (e.key === "Escape") {
                     setIsFullscreen(false);
+                    setIsVideoModalOpen(false);
                 }
             };
 
@@ -52,18 +63,18 @@ export default function BeforeAfterCarousel({
                 window.removeEventListener("keydown", handleKeyDown);
             };
         }
-    }, [isFullscreen]);
+    }, [isFullscreen, isVideoModalOpen]);
 
-    // Auto-advance
+    // Auto-advance (pause when fullscreen or video modal is open)
     useEffect(() => {
-        if (isPaused || isFullscreen) return;
+        if (isPaused || isFullscreen || isVideoModalOpen) return;
 
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % pairs.length);
         }, intervalMs);
 
         return () => clearInterval(timer);
-    }, [pairs.length, intervalMs, isPaused, isFullscreen]);
+    }, [pairs.length, intervalMs, isPaused, isFullscreen, isVideoModalOpen]);
 
     // Handlers
     const handleNext = useCallback(() => {
@@ -156,8 +167,19 @@ export default function BeforeAfterCarousel({
                                     )}
                                     {currentPair.description && <p className="text-text-secondary max-w-2xl mx-auto">{currentPair.description}</p>}
 
-                                    <div className="mt-4 flex justify-center">
-                                        <span className="text-xs font-medium text-accent uppercase tracking-widest border border-accent/30 rounded-full px-3 py-1 cursor-pointer hover:bg-accent/10 transition-colors" onClick={() => setIsFullscreen(true)}>
+                                    <div className="mt-4 flex justify-center gap-3 flex-wrap">
+                                        {currentPair.videoUrl && (
+                                            <button 
+                                                className="inline-flex items-center gap-2 text-xs font-medium text-black bg-accent hover:bg-accent-hover uppercase tracking-widest rounded-full px-4 py-1.5 cursor-pointer transition-colors shadow-lg shadow-accent/20"
+                                                onClick={(e) => { e.stopPropagation(); setIsVideoModalOpen(true); }}
+                                            >
+                                                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M8 5v14l11-7z" />
+                                                </svg>
+                                                Play Video Demo
+                                            </button>
+                                        )}
+                                        <span className="text-xs font-medium text-accent uppercase tracking-widest border border-accent/30 rounded-full px-3 py-1.5 cursor-pointer hover:bg-accent/10 transition-colors" onClick={() => setIsFullscreen(true)}>
                                             Click for explanation
                                         </span>
                                     </div>
@@ -291,6 +313,44 @@ export default function BeforeAfterCarousel({
                                 </div>
                             )}
                         </div>
+                    </div>
+                </div>,
+                portalTarget
+            )}
+
+            {/* Video Demo Modal */}
+            {mounted && isVideoModalOpen && currentPair.videoUrl && portalTarget && createPortal(
+                <div
+                    className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 animate-fade-in"
+                    onClick={() => setIsVideoModalOpen(false)}
+                >
+                    {/* Close button */}
+                    <button
+                        className="absolute top-4 right-4 md:top-6 md:right-6 text-white/60 hover:text-white transition-colors z-10 p-2"
+                        onClick={() => setIsVideoModalOpen(false)}
+                        aria-label="Close video"
+                    >
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    {/* ESC hint */}
+                    <div className="absolute top-6 left-6 text-white/40 text-sm hidden md:block">
+                        Press <kbd className="px-2 py-1 bg-white/10 rounded text-xs ml-1">ESC</kbd> to close
+                    </div>
+
+                    {/* Video element */}
+                    <div
+                        className="relative w-full max-w-6xl aspect-video rounded-xl overflow-hidden bg-black shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <video
+                            src={getDirectVideoUrl(currentPair.videoUrl)}
+                            className="absolute inset-0 w-full h-full"
+                            controls
+                            autoPlay
+                        />
                     </div>
                 </div>,
                 portalTarget

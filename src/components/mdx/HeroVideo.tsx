@@ -20,6 +20,20 @@ function getYouTubeId(url: string): string | null {
   return match ? match[1] : null;
 }
 
+// Check if URL is a direct video file (mp4, webm, etc.) or Dropbox
+function isDirectVideoUrl(url: string): boolean {
+  return /\.(mp4|webm|ogg|mov)(\?|$)/i.test(url) || url.includes('dropbox.com');
+}
+
+// Convert Dropbox share link to raw/direct link
+function getDirectVideoUrl(url: string): string {
+  if (url.includes('dropbox.com')) {
+    // Replace dl=0 with raw=1 for direct access
+    return url.replace(/dl=0/, 'raw=1').replace(/&st=[^&]+/, '');
+  }
+  return url;
+}
+
 export default function HeroVideo({ 
   url, 
   title, 
@@ -31,6 +45,8 @@ export default function HeroVideo({
 
   const vimeoId = getVimeoId(url);
   const youtubeId = getYouTubeId(url);
+  const isDirectVideo = isDirectVideoUrl(url);
+  const directVideoUrl = isDirectVideo ? getDirectVideoUrl(url) : null;
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -60,6 +76,108 @@ export default function HeroVideo({
     : youtubeId
     ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`
     : null;
+
+  // Render direct video (MP4/Dropbox)
+  if (isDirectVideo && directVideoUrl) {
+    return (
+      <>
+        {/* Hero Video Container - Full Width */}
+        <div className="relative w-screen left-1/2 -translate-x-1/2 aspect-[16/9] md:aspect-[21/9] overflow-hidden mb-12 animate-fade-in">
+          {/* Background Video (muted, autoplay, loop) */}
+          <div className="absolute inset-0">
+            <video
+              src={directVideoUrl}
+              className={`absolute inset-0 w-full h-full object-cover scale-[1.05] transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              onLoadedData={() => setIsLoaded(true)}
+            />
+            
+            {/* Fallback gradient while loading */}
+            <div 
+              className={`absolute inset-0 bg-gradient-to-br from-surface-elevated to-surface transition-opacity duration-1000 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+            />
+          </div>
+
+          {/* Dark Overlay */}
+          <div 
+            className="absolute inset-0 bg-black transition-opacity duration-300"
+            style={{ opacity: overlayOpacity / 100 }}
+          />
+
+          {/* Content Layer */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 md:p-10">
+            {/* Play Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="group relative"
+              aria-label="Play video"
+            >
+              {/* Pulse ring animation */}
+              <div className="absolute inset-0 rounded-full bg-white/20 animate-ping" style={{ animationDuration: '2s' }} />
+              
+              {/* Button */}
+              <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 hover:bg-white hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-2xl">
+                <svg
+                  className="w-8 h-8 md:w-10 md:h-10 text-gray-900 ml-1"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </button>
+
+            {/* Caption */}
+            {caption && (
+              <p className="mt-6 text-sm md:text-base text-white/80 tracking-wide text-center max-w-2xl">
+                {caption}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Modal for direct video */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-fade-in"
+            onClick={() => setIsModalOpen(false)}
+          >
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-white/60 hover:text-white transition-colors z-10 p-2"
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Close video"
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* ESC hint */}
+            <div className="absolute top-6 left-6 text-white/40 text-sm hidden md:block">
+              Press <kbd className="px-2 py-1 bg-white/10 rounded text-xs ml-1">ESC</kbd> to close
+            </div>
+
+            {/* Video element */}
+            <div
+              className="relative w-full max-w-6xl aspect-video rounded-xl overflow-hidden bg-black shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                src={directVideoUrl}
+                className="absolute inset-0 w-full h-full"
+                controls
+                autoPlay
+              />
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
 
   if (!backgroundVideoUrl) {
     return (
@@ -122,10 +240,12 @@ export default function HeroVideo({
             </div>
           </button>
 
-          {/* Watch prompt */}
-          <p className="mt-6 text-sm text-white/60 tracking-wide">
-            Click to watch
-          </p>
+          {/* Caption */}
+          {caption && (
+            <p className="mt-6 text-sm md:text-base text-white/80 tracking-wide text-center max-w-2xl">
+              {caption}
+            </p>
+          )}
         </div>
       </div>
 

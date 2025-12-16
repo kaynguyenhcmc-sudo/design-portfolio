@@ -52,7 +52,7 @@ export default function ResumePage() {
                                 className="object-cover"
                             />
                         </div>
-                        <div className="text-center md:text-left">
+<div className="text-center md:text-left">
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 print:text-black tracking-tight">Khue Nguyen</h1>
                             <p className="text-xl md:text-2xl text-accent font-medium mb-4 print:text-black">Product Designer</p>
 
@@ -81,9 +81,9 @@ export default function ResumePage() {
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-accent font-bold uppercase tracking-wider mb-3 print:text-black print:font-bold">Tools</h3>
+<h3 className="text-accent font-bold uppercase tracking-wider mb-3 print:text-black print:font-bold">Tools</h3>
                             <p className="text-text-secondary print:text-gray-700 leading-relaxed">
-                                Figma Design, Figma Make, Cursor, Adobe CS, Jira, Google Suite, Gemini 3, ChatGPT
+                                Figma Design, Figma Make, Cursor, Adobe CS, Jira, Confluence, Google Workspace, Gemini 3, ChatGPT
                             </p>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ export default function ResumePage() {
                 <section className="mb-16">
                     <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 print:text-black print:border-black">Summary</h2>
                     <p className="text-text-secondary leading-relaxed mb-4 text-lg print:text-gray-800">
-                        Product Designer with 7+ years of experience designing complex, mission-critical, data-heavy systems at scale. Owns end-to-end UX across Redaction, Performance, Auto-Tagging, and Cases within the Axon Evidence platform. Strong systems thinker with deep experience in AI-assisted workflows, dashboard and data-driven design, and cross-functional leadership.
+                        Product Designer with 7+ years of experience designing complex, mission-critical, data-heavy systems at scale. Owns end-to-end UX for Axon Evidence platform products serving law enforcement agencies across the United States, Canada, South America, Europe, and Australia. Brings cross-domain experience designing fintech and e-commerce products across Southeast Asia markets. A strong systems thinker with deep expertise in AI-assisted workflows, dashboard and data-driven design, and cross-functional leadership.
                     </p>
                     <p className="font-bold text-white text-lg print:text-black">
                         From one-page spec to production: I own complex problems end to end.
@@ -192,8 +192,7 @@ export default function ResumePage() {
                             <div>
                                 <h5 className="font-bold text-accent mb-2 print:text-black">Selected Achievements</h5>
                                 <ul className="list-none space-y-1 text-text-secondary print:text-gray-800">
-                                    <li>• AI Innovation Award | Top-voted idea</li>
-                                    <li>• Axon Product Design AI Enablement Day</li>
+                                    <li>• AI Innovation Award | Top-voted idea at Axon Product Design AI Enablement Day</li>
                                 </ul>
                             </div>
 

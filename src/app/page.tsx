@@ -39,7 +39,7 @@ export default async function HomePage() {
             <div className="text-lg md:text-xl text-text-secondary leading-relaxed w-full mb-12 space-y-6">
               <h1 className="mb-8">
                 <span className="block text-4xl md:text-6xl font-bold text-white tracking-tight mb-2">
-                  Hi, I’m <span className="text-accent">Khue Nguyen</span>
+Hi, I'm <span className="text-accent">Khue Nguyen</span>
                 </span>
                 <span className="block text-xl md:text-3xl font-medium text-text-secondary/80 leading-relaxed">
                   Welcome, and thanks for visiting my portfolio.
@@ -47,7 +47,7 @@ export default async function HomePage() {
               </h1>
 
               <p>
-                As a <strong className="text-white">Product Designer</strong> at <strong className="text-white">Axon</strong>, I design end-to-end experiences within the Digital Evidence Management System (DEMS) ecosystem, specializing in AI-assisted workflows including Performance optimization, Auto-Tagging, and Redaction—the masking of sensitive information in evidence.
+                As a <strong className="text-white">Product Designer</strong> at <strong className="text-white">Axon</strong>, I design end-to-end experiences for Digital Evidence Management Systems (DEMS), specializing in AI-assisted workflows including performance optimization, auto-tagging, and redaction—the masking of sensitive information in evidence. The products I lead support law enforcement agencies across the United States, Canada, South America, Europe, and Australia.
               </p>
 
               <p>
@@ -55,7 +55,7 @@ export default async function HomePage() {
               </p>
 
               <p>
-                Previously, I shaped digital wallet products at <strong className="text-white">helloPay</strong> (acquired by Ant Financial), designing scalable and user-friendly payment flows across diverse markets.
+                Previously, I shaped digital wallet products at <strong className="text-white">helloPay</strong> (acquired by Ant Financial), designing scalable and user-friendly payment flows across Southeast Asian markets.
               </p>
 
               <p>
