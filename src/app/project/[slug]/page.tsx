@@ -38,38 +38,38 @@ const components = {
   VideoEmbed,
   TimelineInfographic,
   BeforeAfterCarousel,
-  h1: ({ children }: { children: React.ReactNode }) => (
+  h1: ({ children }: { children?: React.ReactNode }) => (
     <h1 className="text-4xl md:text-5xl font-semibold text-text-primary mb-6 leading-tight">
       {children}
     </h1>
   ),
-  h2: ({ children }: { children: React.ReactNode }) => (
+  h2: ({ children }: { children?: React.ReactNode }) => (
     <h2 className="text-2xl md:text-3xl font-semibold text-text-primary mb-4 mt-12">
       {children}
     </h2>
   ),
-  h3: ({ children }: { children: React.ReactNode }) => (
+  h3: ({ children }: { children?: React.ReactNode }) => (
     <h3 className="text-xl font-semibold text-text-primary mb-3 mt-8">
       {children}
     </h3>
   ),
-  p: ({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) => (
+  p: ({ children, style }: { children?: React.ReactNode; style?: React.CSSProperties }) => (
     <p className="text-text-secondary text-lg leading-relaxed mb-6" style={style}>
       {children}
     </p>
   ),
-  ul: ({ children }: { children: React.ReactNode }) => (
+  ul: ({ children }: { children?: React.ReactNode }) => (
     <ul className="list-disc list-outside ml-6 mb-6 space-y-2 text-text-secondary text-lg">
       {children}
     </ul>
   ),
-  li: ({ children }: { children: React.ReactNode }) => (
+  li: ({ children }: { children?: React.ReactNode }) => (
     <li className="leading-relaxed">{children}</li>
   ),
-  strong: ({ children }: { children: React.ReactNode }) => (
+  strong: ({ children }: { children?: React.ReactNode }) => (
     <strong className="font-semibold text-text-primary">{children}</strong>
   ),
-  blockquote: ({ children }: { children: React.ReactNode }) => (
+  blockquote: ({ children }: { children?: React.ReactNode }) => (
     <blockquote className="border-l-4 border-accent pl-6 my-6 italic text-text-secondary">
       {children}
     </blockquote>
