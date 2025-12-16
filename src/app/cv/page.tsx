@@ -60,8 +60,8 @@ export default function ResumePage() {
                                 <p>bichkhue.nguyen@gmail.com</p>
                                 <p>+84 903 477 106</p>
                                 <div className="flex gap-4 justify-center md:justify-start pt-1">
-                                    <Link href="/" className="hover:text-accent border-b border-transparent hover:border-accent transition-colors">portfolio.com</Link>
-                                    <a href="https://vn.linkedin.com/in/bichkhue" target="_blank" rel="noopener noreferrer" className="hover:text-accent border-b border-transparent hover:border-accent transition-colors">linkedin</a>
+                                    <Link href="/" className="hover:text-accent border-b border-transparent hover:border-accent transition-colors">Portfolio</Link>
+                                    <a href="https://vn.linkedin.com/in/bichkhue" target="_blank" rel="noopener noreferrer" className="hover:text-accent border-b border-transparent hover:border-accent transition-colors">Linkedin</a>
                                 </div>
                             </div>
                         </div>
