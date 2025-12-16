@@ -39,7 +39,7 @@ export default async function HomePage() {
             <div className="text-lg md:text-xl text-text-secondary leading-relaxed w-full mb-12 space-y-6">
               <h1 className="mb-8">
                 <span className="block text-4xl md:text-6xl font-bold text-white tracking-tight mb-2">
-Hi, I'm <span className="text-accent">Khue Nguyen</span>
+Hi, I&apos;m <span className="text-accent">Khue Nguyen</span>
                 </span>
                 <span className="block text-xl md:text-3xl font-medium text-text-secondary/80 leading-relaxed">
                   Welcome, and thanks for visiting my portfolio.
